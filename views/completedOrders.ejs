@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Completed Orders</title>
+</head>
+<body>
+    <%- include("./partials/header.ejs") %>
+    <h1>Completed Orders</h1>
+        <!-- Search Form fcor customer by name -->
+        <form class="search-form"action="/search-completed-orders"  method="POST">
+            <input type="text" name="customerName" placeholder="Enter Customer Name" required>
+            <button type="submit">Search</button>
+        </form>
+        <!-- if statement to print out orders -->
+        <% if (completedOrders && completedOrders.length> 0) { %>
+    <h2>Completed Order List:</h2>
+    <!-- table for headings -->
+    <table>
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Total Price</th>
+                <th>Status</th>
+                <th>Driver Name</th>
+                <th>License Plate</th>
+                <th>Delivery Photo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- for loop to print out orders retrieved from the database  -->
+            <% for (let i = 0; i < completedOrders.length; i++) { %>
+                <tr>
+                    <td><%= completedOrders[i].customerName %></td>
+                    <td><%= completedOrders[i].customerAddress %></td>
+                    <td><%= completedOrders[i].orderDate.toLocaleString() %></td>
+                    <td><%= completedOrders[i].totalPrice %></td>
+                    <td><%= completedOrders[i].status %></td>
+                    <td><%= completedOrders[i].driver ? completedOrders[i].driver.name : 'TBD' %></td> <!-- Access driver's name / replaces it with 'TBD'  -->
+                    <td><%= completedOrders[i].driver ? completedOrders[i].driver.plate : 'TBD' %></td> <!-- Access driver's license plate / replaces it with 'TBD' -->
+                    <td>
+                        <!-- if statement to post the image when the order is completed -->
+                        <% if (completedOrders[i].photo) { %>
+                            <img alt="Delivery Photo"class ="imageCrop"src="/orders/image/<%= completedOrders[i].photo._id %>">
+                        <% } else %>
+                    </td>
+                </tr>
+            <% } %>
+            
+        </tbody>
+    </table>
+    <% } else { %>
+        <p class = "OrderNotFound">No orders found.</p>
+        <% } %>
+</body>
+</html>  

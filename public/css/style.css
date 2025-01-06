@@ -1,0 +1,130 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light background for contrast */
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+h1 {
+  text-align: center;
+  color: #d71921; /* Main color for the header */
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+th {
+  background-color: #d71921; /* Main color for header background */
+  color: #ffeba7; /* Menu text color for header text */
+}
+img {
+  border-radius: 5px; /* Rounded corners for images */
+}
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+main {
+  text-align: center;
+}
+.search-form {
+  display: flex;
+  justify-content: center; /* Center the form items */
+  margin: 20px 0; /* Margin around the form */
+}
+.search-form input[type="text"] {
+  padding: 10px;
+  font-size: 12px; /* Increased font size */
+  border: 2px solid #d71921; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  margin-right: 10px; /* Space between input and button */
+  width: 300px; /* Fixed width for the input */
+}
+.search-form button {
+  padding: 10px 20px;
+  font-size: 12px; /* Increased font size */
+  color: #fff; /* Text color */
+  background-color: #d71921; /* Button color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+}
+.search-form button:hover {
+  background-color: #ffeba7; /* Change color on hover */
+  color: #d71921; /* Change text color on hover */
+}
+.orders-container{
+  display: flex;
+  flex-direction: row;
+  gap:50px; 
+  justify-content: center;
+  padding: 100px;
+  font-size: 40px;
+}
+a{
+  text-decoration: none;
+  color: #ffeba7;
+}
+.orders-box{
+display: flex;
+flex-direction: row;
+background-color: #d71921;
+padding: 50px;
+border-radius: 10px;
+}
+.container{
+display: flex;
+flex-direction: column;
+font-size: 30px;
+}
+.OrderNotFound{
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  padding: 20px;
+  margin: 20px;
+  font-weight: bold;
+}
+nav {
+  background-color: #d71921; /* Main color */
+  padding: 30px 0; /* Increase padding for the nav */
+  border-radius: 20px; /* Rounded bottom corners */
+  width: 100%; /* Full width */
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Center the nav items */
+}
+nav ul li {
+  margin: 0 30px; /* Space between nav items */
+}
+nav ul li a {
+  color: #ffeba7; /* Menu text color */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 30px; 
+}
+nav ul li a:hover {
+  color: #fff;
+}
+.imageCrop{
+  width: 50px;
+  height: 50px;
+}
+.logo{
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 800px;
+}

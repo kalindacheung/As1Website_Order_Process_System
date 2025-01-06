@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Orders</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        <!-- displays the header.ejs from partials onto this page-->
+    <%- include("./partials/header.ejs") %>
+    
+    <h1>All Orders</h1>
+
+    <!-- Search form for customer name-->
+    <form class="search-form" action="/search-orders" method="POST">
+        <input type="text" name="customerName" placeholder="Enter Customer Name" required>
+        <button type="submit">Search</button>
+    </form>
+    <!-- if statement to print out orders -->
+    <% if (orders && orders.length> 0) { %>
+        <h2>Order List:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Address</th>
+                    <th>Date</th>
+                    <th>Total Price</th>
+                    <th>Status</th>
+                    <th>Driver Name</th>
+                    <th>License Plate</th>
+                    <th>Delivery Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <!-- for loop to print out all orders retrieved from the database -->
+                <% for (let i = 0; i < orders.length; i++) { %>
+                    <tr>
+                        <td><%= orders[i].customerName %></td>
+                        <td><%= orders[i].customerAddress %></td>
+                        <td><%= orders[i].orderDate.toLocaleString() %></td>
+                        <td><%= orders[i].totalPrice %></td>
+                        <td><%= orders[i].status %></td>
+                        <td><%= orders[i].driver ? orders[i].driver.name : 'N/A' %></td> <!-- Access driver's name -->
+                        <td><%= orders[i].driver ? orders[i].driver.plate : 'N/A' %></td> <!-- Access driver's license plate -->
+                        <td>
+                            <% if (orders[i].photo) { %>
+                                <img class ="imageCrop"src="/orders/image/<%= orders[i].photo._id %>" alt="Delivery Photo" >
+                            <% } %>
+                        </td>
+                    </tr>
+                <% } %>                
+            </tbody>
+        </table>
+            <!-- if  orders are found print out this-->
+        <% } else { %>
+            <p class = "OrderNotFound">No orders found.</p>
+            <% } %>
+</body>
+
+</html>
